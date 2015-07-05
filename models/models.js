@@ -54,7 +54,14 @@ sequelize.sync().then(function(){
                   });
       Quiz.create({ pregunta: 'Capital de Portugal',
                     respuesta: 'Lisboa'
-                  }).then(function(){console.log('Base de datos inicializada')});
+                  });
+      Quiz.create({ pregunta: 'Rio mas caudaloso del mundo',
+                    respuesta: 'Amazonas'
+                  });
+      Quiz.create({ pregunta: 'Rio mas largo del mundo',
+                    respuesta: 'Nilo'
+                  })
+      .then(function(){console.log('Base de datos inicializada')});
     };
   });
 });

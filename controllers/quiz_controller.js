@@ -1,6 +1,3 @@
-//En las nuevas versiones de Sequelize el interfaz ha cambiado para usar "Promesas".
-//A grandes rasgos hay que cambiar .success por .then, .error por .catch y .done por .finally.
-
 var models = require('../models/models.js');
 
 // Autoload - factoriza el código si ruta incluye :quizId
@@ -20,33 +17,21 @@ exports.load = function(req, res, next, quizId){
 
 // GET /quizes
 exports.index = function(req, res) {
-	models.Quiz.findAll().then(function(quizes) {
+	var v_busqueda = '%';
+	if (req.query.search){
+		v_busqueda = '%' + req.query.search.replace(/\s/g,"%")  + '%';
+	};
+
+	models.Quiz.findAll({where:["upper(pregunta) like upper(?)", v_busqueda]}).then(function(quizes) {
 		res.render('quizes/index.ejs',{quizes: quizes});
 	}).catch(function(error){next(error);})
-};
 
-//GET /quizes/:id
-//exports.show = function(req, res){
-//	models.Quiz.findById(req.params.quizId).then(function(quiz){
-//		res.render('quizes/show', {quiz: quiz});
-//	})
-//};
+};
 
 //GET /quizes/:id
 exports.show = function(req, res){
 		res.render('quizes/show', {quiz: req.quiz});
 };
-
-//GET /quizes/:id/answer
-//exports.answer = function(req, res){
-//	models.Quiz.findById(req.params.quizId).then(function(quiz) {
-//		if(req.query.respuesta === quiz.respuesta){
-//			res.render('quizes/answer', {quiz: quiz, respuesta: 'Correcto'});
-//		}else{
-//			res.render('quizes/answer', {quiz: quiz, respuesta: 'Incorrecto'});
-//		}
-//	})
-//};
 
 //GET /quizes/:id/answer
 exports.answer = function(req, res){
