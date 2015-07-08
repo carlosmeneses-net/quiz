@@ -5,7 +5,7 @@ body				{ background: #999; }
 
 img		{ width:120px; height:120px;}
 
-nav					{ float: left; width: 15%; height: 200px;}
+nav					{ float: left; width: 15%; height: 400px;}
 nav span 				{ margin: 0px 100px 0px 0px;}
-section 				{ float: right; width: 80%; height: 200px;}
-footer 				{ clear: both;  display: block; } 
+section 				{ float: right; width: 80%; height: 400px;}
+footer 				{ clear: both;  display: block; }

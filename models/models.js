@@ -50,16 +50,20 @@ sequelize.sync().then(function(){
   Quiz.count().then(function (count){
     if(count===0){
       Quiz.create({ pregunta: 'Capital de Italia',
-                    respuesta: 'Roma'
+                    respuesta: 'Roma',
+                    tema: 'geopolitica'
                   });
       Quiz.create({ pregunta: 'Capital de Portugal',
-                    respuesta: 'Lisboa'
+                    respuesta: 'Lisboa',
+                    tema: 'geopolitica'
                   });
       Quiz.create({ pregunta: 'Rio mas caudaloso del mundo',
-                    respuesta: 'Amazonas'
+                    respuesta: 'Amazonas',
+                    tema:'geografia'
                   });
       Quiz.create({ pregunta: 'Rio mas largo del mundo',
-                    respuesta: 'Nilo'
+                    respuesta: 'Nilo',
+                    tema:'geografia'
                   })
       .then(function(){console.log('Base de datos inicializada')});
     };

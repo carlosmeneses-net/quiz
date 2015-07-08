@@ -4,14 +4,33 @@
   <tr>
   <td>
     <form method="get" action="/quizes">
-      Buscar Pregunta: <input type="text" name="search" value="" />
-      <input type="submit" value="Enviar" />
+    <tr>
+     <td>
+     Tema:
+      <select name="search_tema">
+        <option value="" selected></option>
+        <option value="geopolitica">Geopolitica</option>
+        <option value="geografia">Geografia</option>
+        <option value="humanidades">Humanidades</option>
+        <option value="ocio">Ocio</option>
+        <option value="ciencia">Ciencia</option>
+        <option value="tecnologia">Tecnología</option>
+        <option value="otro">Otro</option>
+      </select>
+      </td>
+      <td>
+      Pregunta: <input type="text" name="search_pregunta" value="" />
+      </td>
+      <td>
+      <input type="submit" value="Buscar" />
+      </td>
     </form>
   </td>
   </tr>
 
 <% var i; for (i=0; i < quizes.length; i++ ){ %>
   <tr>
+    <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].tema %></a></td>
     <td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
     <td><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
     <td>
@@ -24,6 +43,8 @@
   </tr>
 <% } %>
 <tr>
+<td>
+</td>
 <td>
   <a href="/quizes/new"><button type="button">Crear Pregunta</button></a>
 </td>
