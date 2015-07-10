@@ -72,6 +72,10 @@ sequelize.sync().then(function(){
       Quiz.create({ pregunta: 'Rio mas largo del mundo',
                     respuesta: 'Nilo',
                     tema:'geografia'
+                  });
+      Quiz.create({ pregunta: '	Estrella mas cercana a la tierra',
+                    respuesta: 'Sol',
+                    tema:'ciencia'
                   })
       .then(function(){console.log('Base de datos inicializada')});
     };
