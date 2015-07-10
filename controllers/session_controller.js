@@ -1,3 +1,12 @@
+//MW de autorización
+exports.loginRequired = function(req, res, next){
+  if (req.session.user){
+    next();
+  }else{
+    res.redirect('/login');
+  }
+};
+
 // Get /login   -- Formulario de login
 exports.new = function(req, res) {
     var errors = req.session.errors || {};
@@ -21,6 +30,7 @@ exports.create = function(req, res) {
 
         // Crear req.session.user
         req.session.user = {id:user.id, username:user.username}; //, isAdmin:user.isAdmin};
+        //res.redirect(req.session.redir.toString());// redirección a path anterior a login
         res.redirect('/quizes'); //req.session.redir.toString());// redirección a path anterior a login
     });
 };
